@@ -9,6 +9,16 @@ gem 'sqlite3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
+
+gem 'pg'
+
+# Use SCSS for stylesheets
+
+
+gem 'bootstrap-sass'
+#time picker gem
+gem 'bootstrap-datetimepicker-rails'
+
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
@@ -32,15 +42,62 @@ gem 'dashing-rails'
 gem 'puma'
 gem 'redis', '~>3.0.6'
 
+
+
+
+# user accounts / session manager
+gem 'devise'
+
+# image uploading gems
+gem 'carrierwave'
+gem 'rmagick'
+gem 'fog', '~> 1.3.1'
+
+
 gem 'haml'
+
+gem 'simple_form'
+gem 'country_select'
+
+gem 'better_errors'
+
+gem 'binding_of_caller'
+
+gem "factory_girl_rails", "~> 4.0"
+
+gem 'validates_email_format_of'
+
+gem 'bcrypt-ruby', '3.0.1'
+
+group :development do
+	gem 'quiet_assets'
+end
+
+group :development, :test do
+  gem 'rspec-rails', '~> 2.0'
+  gem 'pry'
+  gem 'pry-debugger'
+  gem 'pry-stack_explorer'
+end
+
+group :test do
+	gem 'capybara'
+	gem 'launchy'
+	gem 'selenium-webdriver'
+	gem 'database_cleaner'
+end
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
 end
 
+group :production do
+	gem 'rails_serve_static_assets'
+end
+
 # Use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.1.2'
+# gem 'bcrypt-ruby', '~> 3.0.0'
 
 # Use unicorn as the app server
 # gem 'unicorn'
