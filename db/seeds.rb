@@ -9,11 +9,11 @@
 
 		vehicles = Vehicle.create([
 
-			{name: 'Fire Engine 1', temp: 20, last_serviced: Date.today, 
+			{name: 'Fire Engine 1', temp: 20, last_serviced: Date.new(2013, 8, 2), 
 				projected_service: Date.new(2013, 12, 25), last_mileage: 59000},
-			{name: 'Fire Engine 2', temp: 40, last_serviced: Date.beginning_of_week, 
+			{name: 'Fire Engine 2', temp: 40, last_serviced: Date.new(2013, 10, 10), 
 				projected_service: Date.new(2013, 11, 30), last_mileage: 999330},
-			{name: 'Police Car 1', temp: 15, last_serviced: Date.today, 
+			{name: 'Police Car 1', temp: 15, last_serviced: Date.new(2013, 1, 2), 
 				projected_service: Date.new(2014, 2, 2), last_mileage: 300} 
 
 			])
