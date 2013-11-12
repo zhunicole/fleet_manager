@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20131111075742) do
   create_table "vehicles", force: true do |t|
     t.integer  "number"
     t.string   "name"
-    t.string   "type"
+    t.string   "category"
     t.integer  "temp"
     t.date     "last_serviced"
     t.date     "projected_service"

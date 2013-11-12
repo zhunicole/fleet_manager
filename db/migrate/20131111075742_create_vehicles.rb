@@ -4,7 +4,7 @@ class CreateVehicles < ActiveRecord::Migration
 
     	t.integer :number
     	t.string :name
-    	t.string :type
+    	t.string :category
     	
     	t.integer :temp 
     	t.date :last_serviced

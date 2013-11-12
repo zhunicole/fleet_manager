@@ -2,14 +2,12 @@ class Dashing.Number extends Dashing.Widget
   @accessor 'current', Dashing.AnimatedValue
 
   @accessor 'difference', ->
-    if @get('last')
-      last = parseInt(@get('last'))
-      current = parseInt(@get('current'))
-      if last != 0
-        diff = Math.abs(Math.round((current - last) / last * 100))
-        "#{diff}%"
+    current = parseInt(@get('current'))
+    if current == 1
+      'day'
     else
       'days'
+      
 
   @accessor 'arrow', ->
     if @get('last')
@@ -22,3 +20,4 @@ class Dashing.Number extends Dashing.Widget
         c.replace /\bstatus-\S+/g, ''
       # add new class
       $(@get('node')).addClass "status-#{data.status}"
+

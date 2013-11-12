@@ -1,9 +1,3 @@
-
-
-# - hoursLeft = (p.end_time - DateTime.now)/60/60/30
-#         .project_card_counter= distance_of_time_in_words(DateTime.now, p.end_time)
-
-
 @vehicles = Vehicle.find(:all, :order => 'projected_service', :limit => 8)
 sequence = nil
 Dashing.scheduler.every '4s' do
@@ -22,6 +16,6 @@ Dashing.scheduler.every '4s' do
 			display_text = 'since last serviced'
 			sequence = 0
 		end
-	  Dashing.send_event(v.id.to_s, { title: v.name, current: display_num, moreinfo: display_text })
+	  Dashing.send_event(v.id.to_s, { title: v.name, current: display_num, moreinfo: display_text})
 	end
 end
