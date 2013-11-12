@@ -9,7 +9,7 @@ class Dashing.Number extends Dashing.Widget
         diff = Math.abs(Math.round((current - last) / last * 100))
         "#{diff}%"
     else
-      ""
+      'days'
 
   @accessor 'arrow', ->
     if @get('last')
