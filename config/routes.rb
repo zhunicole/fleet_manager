@@ -1,10 +1,26 @@
 FleetManager::Application.routes.draw do
+
+  devise_for :users, 
+  :path => "users",
+  :path_names => { 
+    :sign_in => 'login',  #was 'login'
+    :sign_out => 'logout',
+    :password => 'secret', 
+    :confirmation => 'verification', 
+    :unlock => 'unblock', 
+    :registration => 'register', 
+    :sign_up => 'sign_up' 
+  }
+
+
   mount Dashing::Engine, at: Dashing.config.engine_path
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'vehicles#index'
+  root :to => redirect("/users/login")
+
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
@@ -14,6 +30,9 @@ FleetManager::Application.routes.draw do
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
     resources :vehicles
+
+
+
 
   # Example resource route with options:
   #   resources :products do

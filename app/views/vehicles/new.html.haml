@@ -11,35 +11,11 @@
 						= f.input :last_mileage, required: false
 						= f.input :temp, required: false
 
-						#datetimepicker.input-append.date
-							= f.input :last_serviced, value: Date.today, inline_label: true, required: true do
-								= f.input_field :last_serviced, :as => :string, "data-format" => "yyyy/MM/dd" 
-								%span.add-on
-									%i{"data-date-icon" => "icon-calendar", "data-time-icon" => "icon-time"}
-						#datetimepicker2.input-append.date
-							= f.input :projected_service, value: Date.today, inline_label: true, required: true do
-								= f.input_field :projected_service, :as => :string, "data-format" => "yyyy/MM/dd" 
-								%span.add-on
-									%i{"data-date-icon" => "icon-calendar", "data-time-icon" => "icon-time"}
+						= f.input :last_serviced, value: Date.today, inline_label: true, required: true 
+
+						= f.input :projected_service, value: Date.today, inline_label: true, required: true 
+							
 						%hr
 							= f.submit 'Create Vehicle'
 
 
-
-%script{src: "http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js", type: "text/javascript"}
-	:cdata
-%script{src: "http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js", type: "text/javascript"}
-	:cdata
-%script{src: "http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.min.js", type: "text/javascript"}
-	:cdata
-%script{src: "http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.pt-BR.js", type: "text/javascript"}
-	:cdata
-:javascript
-	$('#datetimepicker').datetimepicker({
-		format: 'dd/MM/yyyy hh:mm:ss',
-		language: 'en'
-	});
-	$('#datetimepicker2').datetimepicker({
-		format: 'dd/MM/yyyy hh:mm:ss',
-		language: 'en'
-	});

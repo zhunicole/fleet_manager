@@ -1,0 +1,87 @@
+/ .section
+/ 	.container
+/ 		.row
+/ 			.col-lg-12
+/ 				%h2 Sign in
+/ 				= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+/ 					.form-inputs
+/ 						= f.input :email, :required => false, :autofocus => true
+/ 						= f.input :password, :required => false
+/ 						= f.input :remember_me, :as => :boolean if devise_mapping.rememberable?
+/ 					.form-actions
+/ 						= f.button :submit, "Sign in"
+/ 				= render "devise/shared/links"
+
+
+!!!
+%html{lang: "en"}
+  %head
+    /
+      Basic Page Needs
+      \==================================================
+    %meta{charset: "utf-8"}/
+    %title Flat Login
+    %meta{content: "", name: "description"}/
+    %meta{content: "", name: "author"}/
+    /
+      Mobile Specific Metas
+      \==================================================
+    %meta{content: "width=device-width, initial-scale=1, maximum-scale=1", name: "viewport"}/
+    /
+      CSS
+      \==================================================
+    /[if lt IE 9]
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  %body
+    .container
+      .flat-form
+        %ul.tabs
+          %li
+            %a.active{href: "#login"} Login
+          %li
+            %a{href: "#register"} Register
+          %li
+            %a{href: "#reset"} Reset Password
+        #login.form-action.show
+          %h1 Fleet Login
+          %p
+            Fleet Manager is a portal to maintain the various vehicles of 
+            under Hope Technik's jurisdiction. more words here. yay
+          %form
+            %ul
+              %li
+                %input{placeholder: "Username", type: "text"}/
+              %li
+                %input{placeholder: "Password", type: "password"}/
+              %li
+                %input.button{type: "submit", value: "Login"}/
+        / /#login.form-action
+        #register.form-action.hide
+          %h1 Register
+          %p
+            You should totally sign up for our super awesome service.
+            It's what all the cool kids are doing nowadays.
+          %form
+            %ul
+              %li
+                %input{placeholder: "Username", type: "text"}/
+              %li
+                %input{placeholder: "Password", type: "password"}/
+              %li
+                %input.button{type: "submit", value: "Sign Up"}/
+        / /#register.form-action
+        #reset.form-action.hide
+          %h1 Reset Password
+          %p
+            To reset your password enter your email and your birthday
+            and we'll send you a link to reset your password.
+          %form
+            %ul
+              %li
+                %input{placeholder: "Email", type: "text"}/
+              %li
+                %input{placeholder: "Birthday", type: "text"}/
+              %li
+                %input.button{type: "submit", value: "Send"}/
+        / /#register.form-action
+    %script.cssdeck{src: "//cdnjs.cloudflare.com/ajax/libs/jquery/1.8.0/jquery.min.js"}
