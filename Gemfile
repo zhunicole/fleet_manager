@@ -4,7 +4,6 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.1'
 
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -71,6 +70,8 @@ gem 'bcrypt-ruby', '3.0.1'
 
 group :development do
 	gem 'quiet_assets'
+	gem 'sqlite3'
+
 end
 
 group :development, :test do
@@ -94,6 +95,7 @@ end
 
 group :production do
 	gem 'rails_serve_static_assets'
+	gem 'pg'
 end
 
 # Use ActiveModel has_secure_password
