@@ -1,14 +1,102 @@
-.section
-	.container
-		.row
-			.col-lg-12
-				%h2 Sign up
-				= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
-					= f.error_notification
-					.form-inputs
-						= f.input :email, :required => true, :autofocus => true
-						= f.input :password, :required => true
-						= f.input :password_confirmation, :required => true
-						.form-actions
-							= f.button :submit, "Sign up"
-				= render "devise/shared/links"
+!!!
+%html{lang: "en"}
+  %head
+    /
+      Basic Page Needs
+      \==================================================
+    %meta{charset: "utf-8"}/
+    %title Flat Login
+    %meta{content: "", name: "description"}/
+    %meta{content: "", name: "author"}/
+    /
+      Mobile Specific Metas
+      \==================================================
+    %meta{content: "width=device-width, initial-scale=1, maximum-scale=1", name: "viewport"}/
+    /
+      CSS
+      \==================================================
+    /[if lt IE 9]
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  %body
+    .container
+      .flat-form
+        %ul.tabs
+          %li
+            %a{href: "#login"} Login
+          %li
+            %a.active{href: "#register"} Register
+          %li
+            %a{href: "#reset"} Reset Password
+
+        #login.form-action.hide
+          %h1 Fleet Login
+          %p
+            Fleet Manager is a portal to maintain the various vehicles of 
+            under Hope Technik's jurisdiction. more words here. yay
+
+          %form
+          = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+            .form-inputs
+              = f.error_notification
+              = f.input :username, :required => false, type: 'text', placeholder: 'username', label: false
+              = f.input :password, :required => false, type: 'password', placeholder: 'password', label: false
+              = f.input :remember_me, type: 'select', :as => :boolean if devise_mapping.rememberable?
+            .form-actions
+              = f.button :submit, "Sign in"
+
+        #register.form-action.show
+          %h1 Register
+          %p
+            You should totally sign up for our super awesome service.
+            It's what all the cool kids are doing nowadays.
+         
+          %form
+          = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+            .form-inputs
+              = f.input :username, :required => false, type: 'text', placeholder: 'username', label: false
+              = f.input :password, :required => false, type: 'password', placeholder: 'password', label: false
+              = f.input :password_confirmation, :required => false, label: false, placeholder: 'confirm password'
+            .form-actions
+              = f.button :submit, "Sign up"
+
+        #reset.form-action.hide
+          %h1 Reset Password
+          %p
+            To reset your password enter your email and your birthday
+            and we'll send you a link to reset your password.
+          %form
+
+
+
+
+
+        / /#register.form-action
+    %script.cssdeck{src: "//cdnjs.cloudflare.com/ajax/libs/jquery/1.8.0/jquery.min.js"}
+
+:javascript
+  (function( $ ) {
+    // constants
+    var SHOW_CLASS = 'show',
+        HIDE_CLASS = 'hide',
+        ACTIVE_CLASS = 'active';
+    
+    $( '.tabs' ).on( 'click', 'li a', function(e){
+      e.preventDefault();
+      var $tab = $( this ),
+           href = $tab.attr( 'href' );
+    
+       $( '.active' ).removeClass( ACTIVE_CLASS );
+       $tab.addClass( ACTIVE_CLASS );
+    
+       $( '.show' )
+          .removeClass( SHOW_CLASS )
+          .addClass( HIDE_CLASS )
+          .hide();
+      
+        $(href)
+          .removeClass( HIDE_CLASS )
+          .addClass( SHOW_CLASS )
+          .hide()
+          .fadeIn( 550 );
+    });
+  })( jQuery );
