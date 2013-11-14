@@ -1,21 +1,49 @@
-.section
-	.container
-		.row
-			.col-lg-12
-				%legend New Vehicle
-				.pull-center
+!!!
+%html{lang: "en"}
+	%head
+		/
+			Basic Page Needs
+			\==================================================
+		%meta{charset: "utf-8"}/
+		%title Flat Login
+		%meta{content: "", name: "description"}/
+		%meta{content: "", name: "author"}/
+		/
+			Mobile Specific Metas
+			\==================================================
+		%meta{content: "width=device-width, initial-scale=1, maximum-scale=1", name: "viewport"}/
+		/
+			CSS
+			\==================================================
+		/[if lt IE 9]
+			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	%body
+		.container
+			.flat-form
+				%ul.tabs
+					%li
+						%a.active{href: "#edit"} New Vehicle
+
+				#login.form-action.show
+					%h1 Add Vehicle
+					%p
+						Please fill in the entire form. Thank you!
+
+					%form
 					= simple_form_for(@vehicle, html: {class: 'form-horizontal' }) do |f|
-						= f.input :number, required: false, hint: true
-						= f.input :name, required: false
-						= f.input :category, required: false, priority: ['fire'], collection: ['fire', 'police'], default: 'fire'
-						= f.input :last_mileage, required: false
-						= f.input :temp, required: false
+						.form-inputs
+							= f.input :number, required: false, hint: true
+							= f.input :name, required: false, placeholder: 'ex: Fire Engine 6'
+							= f.input :category, required: false, priority: ['fire'], collection: ['fire', 'police'], default: 'fire'
+							= f.input :last_mileage, required: false
+							= f.input :temp, required: false
 
-						= f.input :last_serviced, value: Date.today, inline_label: true, required: true 
+							= f.input :last_serviced, value: Date.today, inline_label: true, required: false 
 
-						= f.input :projected_service, value: Date.today, inline_label: true, required: true 
-							
-						%hr
+							= f.input :projected_service, value: Date.today, inline_label: true, required: false 
+								
+						.form-actions
 							= f.submit 'Create Vehicle'
 
+		%script.cssdeck{src: "//cdnjs.cloudflare.com/ajax/libs/jquery/1.8.0/jquery.min.js"}
 

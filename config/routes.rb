@@ -31,13 +31,9 @@ FleetManager::Application.routes.draw do
   # Example resource route (maps HTTP verbs to controller actions automatically):
     # resources :vehicles
 
-    get '/vehicles/new', to: 'vehicles#new', as: 'vehicles'
-    post '/vehicles/:id', to: 'vehicles#create', as: 'create_vehicle'
-
-
+    resources :vehicles
     delete '/vehicles/:id/delete', to: 'vehicles#delete', as: 'delete_vehicle'
-
-    get '/vehicles/:id/edit', to: 'vehicles#edit', as: 'edit_vehicle' 
+    # get '/vehicles/:id/edit', to: 'vehicles#edit', as: 'edit_vehicle' 
     patch '/vehicles/:id/update', to: 'vehicles#update', as: 'update_vehicle'
 
 

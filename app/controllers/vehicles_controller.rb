@@ -13,15 +13,14 @@ class VehiclesController < ApplicationController
 	end
 
 
-	def create
-		
+	def create		
 		@vehicle = Vehicle.new(vehicle_params)
 		if @vehicle.save then 
-			redirect_to dashing_path
-		else
-			render 'new'
+			Activity.new(log: ' created '+ @vehicle.name, created_by: current_user.email).save
+			redirect_to root_path
+		else 
+			render root_path
 		end
-
 	end
 
 	def edit
@@ -35,7 +34,6 @@ class VehiclesController < ApplicationController
     else 
       render 'edit'
     end
-
 	end
 
 	def delete
