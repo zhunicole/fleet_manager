@@ -1,2 +1,79 @@
-Edit Vehicle
+!!!
+%html{lang: "en"}
+	%head
+		/
+			Basic Page Needs
+			\==================================================
+		%meta{charset: "utf-8"}/
+		%title Flat Login
+		%meta{content: "", name: "description"}/
+		%meta{content: "", name: "author"}/
+		/
+			Mobile Specific Metas
+			\==================================================
+		%meta{content: "width=device-width, initial-scale=1, maximum-scale=1", name: "viewport"}/
+		/
+			CSS
+			\==================================================
+		/[if lt IE 9]
+			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	%body
+		.container
+			.flat-form
+				%ul.tabs
+					%li
+						%a.active{href: "#edit"} Edit Vehicle
 
+				#login.form-action.show
+					%h1 Edit Vehicle
+					%p
+						Please make your edits and save. Thank you!
+
+					%form
+					= simple_form_for(@vehicle, :url => update_vehicle_path(@vehicle)) do |f|
+						.form-inputs
+							= f.error_notification
+							= f.input :number, required: false, hint: true
+							= f.input :name, required: false
+							= f.input :category, required: false, priority: ['fire'], collection: ['fire', 'police'], default: 'fire'
+							= f.input :last_mileage, required: false
+							= f.input :temp, required: false
+							= f.input :last_serviced, value: Date.today, inline_label: true, required: false 
+
+							= f.input :projected_service, value: Date.today, inline_label: true, required: false 
+							
+						.form-actions
+							= f.button :submit, "Save"
+					=link_to 'Delete vehicle', delete_vehicle_path(@vehicle), :data => { :confirm => "Deleting this vehicle removes its records. Are you sure?" }, :method => :delete
+
+		%script.cssdeck{src: "//cdnjs.cloudflare.com/ajax/libs/jquery/1.8.0/jquery.min.js"}
+
+
+:javascript
+
+	(function( $ ) {
+
+		var SHOW_CLASS = 'show',
+				HIDE_CLASS = 'hide',
+				ACTIVE_CLASS = 'active';
+		
+		$( '.tabs' ).on( 'click', 'li a', function(e){
+			e.preventDefault();
+			var $tab = $( this ),
+					 href = $tab.attr( 'href' );
+		
+			 $( '.active' ).removeClass( ACTIVE_CLASS );
+			 $tab.addClass( ACTIVE_CLASS );
+		
+			 $( '.show' )
+					.removeClass( SHOW_CLASS )
+					.addClass( HIDE_CLASS )
+					.hide();
+			
+				$(href)
+					.removeClass( HIDE_CLASS )
+					.addClass( SHOW_CLASS )
+					.hide()
+					.fadeIn( 550 );
+		});
+	})( jQuery );
