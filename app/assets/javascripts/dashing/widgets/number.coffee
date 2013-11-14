@@ -5,7 +5,7 @@ class Dashing.Number extends Dashing.Widget
     current = parseInt(@get('current'))
     if current == 1
       'day'
-    else
+    else  
       'days'
       
 

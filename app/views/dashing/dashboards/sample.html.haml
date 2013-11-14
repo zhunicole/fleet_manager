@@ -11,10 +11,12 @@
       / %li{"data-col" => "1", "data-row" => "1", "data-sizex" => "2", "data-sizey" => "1"}
       /   %div{"data-id" => "welcome", "data-moreinfo" => "Protip: You can drag the widgets around!", "data-text" => "This is your shiny new dashboard.", "data-title" => "Hello", "data-view" => "Text"}
       / %li{"data-col" => "1", "data-row" => "1", "data-sizex" => "1", "data-sizey" => "1"}
-      /   %div{"data-id" => "synergy", "data-max" => "100", "data-min" => "0", "data-title" => "Synergy", "data-view" => "Meter"}
-      
+      /   %div{"data-id" => "synergy", "data-max" => "100", "data-min" => "0", "data-title" => "Synergy", "data-view" => "Meter"} 
       %li{"data-col" => "1", "data-row" => "1", "data-sizex" => "1", "data-sizey" => "1"}
-        %div{"data-id" => v.id.to_s,  "data-prefix" => "", "data-view" => "Number", 'data-category'=> v.category} 
+        %a{"data-id" => v.id.to_s,  "data-prefix" => "", "data-view" => "Number", 'data-category'=> v.category, href: 'vehicles/'+v.id.to_s+'/edit'}'
+        / %a{href: 'some_path'}
+
+      
       / %li{"data-col" => "1", "data-row" => "1", "data-sizex" => "2", "data-sizey" => "1"}
       /   %div{"data-id" => "convergence", "data-title" => "Convergence", "data-view" => "Graph", style: "background-color:#ff9618"}
     %li{"data-col" => "1", "data-row" => "1", "data-sizex" => "1", "data-sizey" => "2"}

@@ -30,6 +30,8 @@ FleetManager::Application.routes.draw do
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
     resources :vehicles
+    
+    delete '/vehicles/:id/', to: 'vehicles#delete', as: 'delete_vehicle_path'
 
 
 
